@@ -5,15 +5,15 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <servlet>
-        <servlet-name>PlainServlet</servlet-name>
-        <servlet-class>ru.kpfu.itis.servlets.PlainServlet</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>PlainServlet</servlet-name>-->
+<!--        <servlet-class>ru.kpfu.itis.servlets.PlainServlet</servlet-class>-->
+<!--    </servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>PlainServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>PlainServlet</servlet-name>-->
+<!--        <url-pattern>/home</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 
