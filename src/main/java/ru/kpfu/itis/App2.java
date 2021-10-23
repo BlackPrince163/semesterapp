@@ -1,8 +1,8 @@
 package ru.kpfu.itis;
 
 import ru.kpfu.itis.models.User;
-import ru.kpfu.itis.servlets.repositories.UsersRepository;
-import ru.kpfu.itis.servlets.repositories.UsersRepositoryJdbcImpl;
+import ru.kpfu.itis.repositories.UsersRepository;
+import ru.kpfu.itis.repositories.UsersRepositoryJdbcImpl;
 
 import java.sql.*;
 import java.util.Scanner;
