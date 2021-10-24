@@ -31,7 +31,6 @@ public class App2 {
             User user = new User();
             user.setFirstName(scanner.next());
             user.setLastName(scanner.next());
-            user.setEmail(scanner.next());
 
             usersRepository.save(user);
 

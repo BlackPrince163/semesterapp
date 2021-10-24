@@ -6,16 +6,14 @@ public class User {
     private String passwordHash;
     private String lastName;
     private String firstName;
-    private String email;
     private Integer votedFor;
 
-    public User(Long id, String login, String passwordHash, String lastName, String firstName, String email, Integer votedFor) {
+    public User(Long id, String login,String firstName, String lastName, String passwordHash, Integer votedFor) {
         this.id = id;
         this.login = login;
         this.passwordHash = passwordHash;
-        this.lastName = lastName;
         this.firstName = firstName;
-        this.email = email;
+        this.lastName = lastName;
         this.votedFor = votedFor;
     }
 
@@ -46,13 +44,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public Integer getVotedFor() {
         return votedFor;
@@ -66,9 +58,10 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", login='" + login + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", email='" + email + '\'' +
                 ", votedFor=" + votedFor +
                 '}';
     }

@@ -2,18 +2,24 @@ package ru.kpfu.itis.repositories;
 
 import ru.kpfu.itis.models.User;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
-
+    private Connection connection;
     private Statement statement;
+
+    //language=sql
+    private final String SQL_INSERT_USER = "INSERT INTO users (first_name, last_name, login, password) VALUES (?, ?, ?, ?)";
+
     public UsersRepositoryJdbcImpl(Statement statement) {
         this.statement = statement;
+    }
+
+    public UsersRepositoryJdbcImpl(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
@@ -26,7 +32,6 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                 user.setId(resultSet.getLong("id"));
                 user.setFirstName(resultSet.getString("first_name"));
                 user.setLastName(resultSet.getString("last_name"));
-                user.setEmail(resultSet.getString("email"));
 
                 users.add(user);
             }
@@ -45,7 +50,6 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                 user.setId(resultSet.getLong("id"));
                 user.setFirstName(resultSet.getString("first_name"));
                 user.setLastName(resultSet.getString("last_name"));
-                user.setEmail(resultSet.getString("email"));
 
                 return user;
             }
@@ -54,16 +58,26 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         }
         return null;
     }
+
     @Override
-    public void save(User user) {
-        //langeage
-        String sql_insert_user = "insert into users (first_name, last_name, email) " +
-                "values ('"+ user.getFirstName()  +"', '"+ user.getLastName() +"', '"+ user.getEmail() +"')";
+    public User save(User user) {
+        ResultSet resultSet = null;
         try {
-            statement.execute(sql_insert_user);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_USER, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getLogin());
+            preparedStatement.setString(4, user.getPasswordHash());
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                user.setId(resultSet.getLong("id"));
+            }
         } catch (SQLException e) {
-            //ignore
+            e.printStackTrace();
         }
+        return user;
     }
 
     @Override

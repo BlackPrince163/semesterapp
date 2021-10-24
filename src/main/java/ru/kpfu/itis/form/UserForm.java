@@ -5,16 +5,15 @@ public class UserForm {
     private String password;
     private String lastName;
     private String firstName;
-    private String email;
-    private Integer votedFor;
 
-    public UserForm(String login, String password, String lastName, String firstName, String email, Integer votedFor) {
+    public UserForm(String login, String password, String lastName, String firstName) {
         this.login = login;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.email = email;
-        this.votedFor = votedFor;
+    }
+
+    public UserForm() {
     }
 
     public String getLogin() {
@@ -49,19 +48,14 @@ public class UserForm {
         this.firstName = firstName;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getVotedFor() {
-        return votedFor;
-    }
-
-    public void setVotedFor(Integer votedFor) {
-        this.votedFor = votedFor;
+    @Override
+    public String toString() {
+        return "UserForm{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                '}';
     }
 }

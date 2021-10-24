@@ -1,4 +1,4 @@
-package ru.kpfu.itis.servlets;
+package ru.kpfu.itis;
 
 import java.sql.*;
 

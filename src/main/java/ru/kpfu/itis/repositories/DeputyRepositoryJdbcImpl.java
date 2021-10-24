@@ -1,6 +1,7 @@
 package ru.kpfu.itis.repositories;
 
 import ru.kpfu.itis.models.Deputy;
+import ru.kpfu.itis.models.User;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
     }
 
     @Override
-    public void save(Deputy deputy) {
-
+    public User save(Deputy deputy) {
+      return null;
     }
 
     @Override
