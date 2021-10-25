@@ -13,6 +13,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     //language=sql
     private final String SQL_INSERT_USER = "INSERT INTO users (first_name, last_name, login, password) VALUES (?, ?, ?, ?)";
+    //language=sql
+    private final String SQL_FIND_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?;";
 
     public UsersRepositoryJdbcImpl(Statement statement) {
         this.statement = statement;
@@ -85,5 +87,27 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     }
 
+    @Override
+    public User findByLogin(String login) {
+        ResultSet resultSet = null;
+        User user = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_USER_BY_LOGIN);
+            preparedStatement.setString(1, login);
 
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                user = new User();
+                user.setId(resultSet.getLong("id"));
+                user.setLogin(resultSet.getString("login"));
+                user.setPasswordHash(resultSet.getString("password"));
+                user.setFirstName(resultSet.getString("fist_name"));
+                user.setLastName(resultSet.getString("last_name"));
+            }
+        } catch (SQLException e) {
+            //ignore
+        }
+        return user;
+    }
 }

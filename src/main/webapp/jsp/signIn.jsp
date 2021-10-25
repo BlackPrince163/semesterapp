@@ -11,6 +11,13 @@
     <title>signin</title>
 </head>
 <body>
-
+<form action="/signIn" method="post" class="form">
+    <p>Sign up</p>
+    <p>
+        <label for="login">Login<input id="login" type="text" name="login"><Br></label><br>
+        <label for="password">Password<input id="password" type="password" name="password"><Br></label>
+    </p>
+    <p><button type="submit">Войти</button></p>
+</form>
 </body>
 </html>
