@@ -1,5 +1,7 @@
 package ru.kpfu.itis.models;
 
+import java.util.Collection;
+
 public class User {
     private Long id;
     private String login;
@@ -7,6 +9,7 @@ public class User {
     private String lastName;
     private String firstName;
     private Integer votedFor;
+    private Post post;
 
     public User(Long id, String login,String firstName, String lastName, String passwordHash, Integer votedFor) {
         this.id = id;
@@ -80,5 +83,13 @@ public class User {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

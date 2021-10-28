@@ -5,16 +5,21 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    <servlet>-->
-<!--        <servlet-name>PlainServlet</servlet-name>-->
-<!--        <servlet-class>ru.kpfu.itis.servlets.PlainServlet</servlet-class>-->
-<!--    </servlet>-->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>ru.kpfu.itis.filters.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>PlainServlet</servlet-name>-->
-<!--        <url-pattern>/home</url-pattern>-->
-<!--    </servlet-mapping>-->
-
-
-
+    <filter>
+        <filter-name>signInFilter</filter-name>
+        <filter-class>ru.kpfu.itis.filters.SignInFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>signInFilter</filter-name>
+        <url-pattern>/availability</url-pattern>
+    </filter-mapping>
 </web-app>

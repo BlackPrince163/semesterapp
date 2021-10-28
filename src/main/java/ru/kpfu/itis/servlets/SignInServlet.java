@@ -59,9 +59,14 @@ public class SignInServlet extends HttpServlet {
         LoginForm loginForm = new LoginForm(login, password);
         Cookie cookie = usersService.signIn(loginForm);
 
-        response.addCookie(cookie);
 
-        response.sendRedirect("/profile");
+        if (cookie != null) {
+            response.addCookie(cookie);
+            response.sendRedirect("/profile");
+        } else {
+            request.setAttribute("signInStatus", "Неправильный логин или пароль");
+            request.getRequestDispatcher("jsp/signIn.jsp").forward(request, response);
+        }
     }
 
 }
