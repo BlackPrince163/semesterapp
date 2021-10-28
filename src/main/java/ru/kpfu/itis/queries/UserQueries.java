@@ -10,6 +10,7 @@ public class UserQueries {
     // language=SQL
     public static final String SQL_SELECT_BY_EMAIL = "SELECT * FROM users WHERE email = ?;";
 
+
     // language=SQL
     public static final String SQL_INSERT = "INSERT INTO users (first_name, last_name, email, hash_password) VALUES (?, ?, ?, ?);";
 
