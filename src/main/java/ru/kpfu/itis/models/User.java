@@ -1,95 +1,33 @@
 package ru.kpfu.itis.models;
 
-import java.util.Collection;
+import lombok.Builder;
+import lombok.Data;
+import org.apache.commons.validator.routines.EmailValidator;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Data
+@Builder
 public class User {
     private Long id;
-    private String login;
-    private String passwordHash;
-    private String lastName;
     private String firstName;
-    private Integer votedFor;
-    private Post post;
+    private String lastName;
+    private String email;
+    private String hashPassword;
 
-    public User(Long id, String login,String firstName, String lastName, String passwordHash, Integer votedFor) {
-        this.id = id;
-        this.login = login;
-        this.passwordHash = passwordHash;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.votedFor = votedFor;
-    }
+    public static boolean validate(HttpServletRequest req, HttpServletResponse resp) {
+        // непустое имя
+        boolean firstNameValid = !req.getParameter("firstName").equals("");
+        // непустой пароль
+        boolean lastNameValid = !req.getParameter("lastName").equals("");
+        // валидация email на основе специальной библиотеки
+        boolean emailValid = EmailValidator.getInstance().isValid(req.getParameter("email"));
+        // пароль не менее 3-х символов
+        boolean passwordValid = req.getParameter("password").length() >= 3;
+        // проверка равенства основного пароля и повторного
+        boolean confirmPasswordValid = req.getParameter("password").equals(req.getParameter("confirm_password"));
 
-    public User() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-
-
-    public Integer getVotedFor() {
-        return votedFor;
-    }
-
-    public void setVotedFor(Integer votedFor) {
-        this.votedFor = votedFor;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", votedFor=" + votedFor +
-                '}';
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
+        return firstNameValid && lastNameValid && emailValid && passwordValid && confirmPasswordValid;
     }
 }
