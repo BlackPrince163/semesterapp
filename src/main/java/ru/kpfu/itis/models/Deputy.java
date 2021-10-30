@@ -11,6 +11,7 @@ public class Deputy {
     private String first_name;
     private String last_name;
     private Integer age;
+    private Integer vote;
     private String photo;
     private String title;
     private Integer number;
