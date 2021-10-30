@@ -70,16 +70,16 @@
     </div>
 </section>
 
-<div class="footer-room-pic">
-    <div class="container-fluid">
-        <div class="row">
-            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-1.jpg" alt="">
-            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-2.jpg" alt="">
-            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-3.jpg" alt="">
-            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-4.jpg" alt="">
-        </div>
-    </div>
-</div>
+<%--<div class="footer-room-pic">--%>
+<%--    <div class="container-fluid">--%>
+<%--        <div class="row">--%>
+<%--            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-1.jpg" alt="">--%>
+<%--            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-2.jpg" alt="">--%>
+<%--            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-3.jpg" alt="">--%>
+<%--            <img src="${pageContext.request.contextPath}static/img/room-footer-pic/room-4.jpg" alt="">--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <footer class="footer-info">
     <div class="container">
@@ -91,12 +91,12 @@
             <div class="col">
                 <div class="col">
                     <h3 class="contact-name">Телефон</h3>
-                    <h5 class="contact-desc">+7 (999) 000-54-54</h5>
+                    <h5 class="contact-desc">+7 (900) 000-00-00</h5>
                 </div>
             </div>
             <div class="col">
                 <h3 class="contact-name">E-mail</h3>
-                <h5 class="contact-desc">booking@gmail.com</h5>
+                <h5 class="contact-desc">vote@gmail.com</h5>
             </div>
         </div>
     </div>
