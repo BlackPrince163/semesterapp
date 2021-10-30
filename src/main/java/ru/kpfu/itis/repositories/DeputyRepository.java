@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DeputyRepository extends CrudRepository<Deputy> {
-    Optional<Deputy> findByName(String last_name);
+    Optional<Deputy> findByName(String first_name);
 
 
 }

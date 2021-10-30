@@ -26,7 +26,7 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
             .title(row.getString("title"))
             .build();
 
-    public DeputyRepositoryJdbcImpl(DataSource dataSource, SimpleJdbcTemplate template) {
+    public DeputyRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
@@ -65,21 +65,25 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
 
     @Override
     public void delete(Deputy entity) {
-
+        template.query(SQL_DELETE_BY_ID, deputyRowMapper, entity.getId());
     }
 
     @Override
     public Optional<Deputy> findById(Long id) {
-        return Optional.empty();
+        // this query will return list with only one user.
+        // findAny returns this user.
+        return template.queryForList(SQL_SELECT_BY_ID, deputyRowMapper, id).stream().findAny();
     }
 
     @Override
     public List<Deputy> findAll() {
-        return null;
+        return template.queryForList(SQL_SELECT, deputyRowMapper);
     }
 
     @Override
-    public Optional<Deputy> findByName(String last_name) {
-        return Optional.empty();
+    public Optional<Deputy> findByName(String first_name) {
+        // this query will return list with only one user.
+        // findAny returns this user.
+        return template.queryForList(SQL_SELECT_BY_FIRST_NAME, deputyRowMapper, first_name).stream().findAny();
     }
 }
