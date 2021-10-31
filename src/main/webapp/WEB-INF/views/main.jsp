@@ -20,7 +20,7 @@
                         <nav>
                             <ul>
                                 <li><a href="main">Главная</a></li>
-                                <li><a href="availability">Голосовать</a></li>
+                                <li><a href="vote">Голосовать</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -33,8 +33,20 @@
                     <div class="col-md-5" style="max-width: 400px">
                         <nav>
                             <ul>
-                                <li><a href="signUp">Регистрация</a></li>
-                                <li><a href="signIn">Вход</a></li>
+                                <h2>
+
+                                        <li><a href="/profile">${FirstName}</a></li>
+                                        <%--<li><a href="/logout">Выйти</a></li>--%>
+
+                                    <%--<c:if test="${EmailNotFound == null}">
+                                         <li><a href="signUp">Регистрация</a></li>
+                                         <li><a href="signIn">Войти</a></li>
+                                     </c:if>--%>
+                                    ${EmailNotFoundRegis}
+                                    ${EmailNotFoundSignIn}
+                                    ${emailLogOut}
+
+                                </h2>
                             </ul>
                         </nav>
                     </div>
