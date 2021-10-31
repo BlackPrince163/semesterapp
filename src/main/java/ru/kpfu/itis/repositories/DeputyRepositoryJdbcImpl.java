@@ -1,6 +1,7 @@
 package ru.kpfu.itis.repositories;
 
 
+import ru.kpfu.itis.form.VoteForm;
 import ru.kpfu.itis.models.Deputy;
 
 import javax.sql.DataSource;
@@ -85,5 +86,11 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
         // this query will return list with only one user.
         // findAny returns this user.
         return template.queryForList(SQL_SELECT_BY_FIRST_NAME, deputyRowMapper, first_name).stream().findAny();
+    }
+
+    @Override
+    public List<Deputy> getVoteDeputy(VoteForm voteForm) {
+        List<Deputy> deputies = template.queryForList(SQL_SELECT_BY_FIRST_NAME, deputyRowMapper, voteForm.getFirst_name());
+        return deputies;
     }
 }

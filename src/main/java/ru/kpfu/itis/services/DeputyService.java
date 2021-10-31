@@ -1,5 +1,6 @@
 package ru.kpfu.itis.services;
 
+import ru.kpfu.itis.form.VoteForm;
 import ru.kpfu.itis.models.Deputy;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface DeputyService {
     Optional<Deputy> findById(Long id);
     Optional<Deputy> findByFirst_Name(String first_name);
     List<Deputy> getAllDeputy();
+    List<Deputy> getVoteDeputy(VoteForm voteForm);
 }
