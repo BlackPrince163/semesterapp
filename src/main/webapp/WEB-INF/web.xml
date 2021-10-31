@@ -14,12 +14,12 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
+    <!--<filter>
         <filter-name>signInFilter</filter-name>
         <filter-class>ru.kpfu.itis.filters.SignInFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>signInFilter</filter-name>
-        <url-pattern>/availability</url-pattern>
-    </filter-mapping>
+        <url-pattern>/vote</url-pattern>
+    </filter-mapping>-->
 </web-app>
