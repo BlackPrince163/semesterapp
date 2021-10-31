@@ -22,21 +22,20 @@
                         <nav>
                             <ul>
                                 <li><a href="main">Главная</a></li>
-                                <li><a href="availability">Бронирование</a></li>
+                                <li><a href="availability">Голосовать</a></li>
                             </ul>
                         </nav>
                     </div>
                     <span style="margin: auto">
                         <div class="top-phone-num">
                             <img src="${pageContext.request.contextPath}static/img/phone.png" alt="">
-                            <span>+7 (999) 000-54-54</span>
+                            <span>+7 (999) 000-00-00</span>
                         </div>
                     </span>
                     <div class="col-md-5" style="max-width: 400px">
                         <nav>
                             <ul>
-                                <li><a href="signUp">Регистрация</a></li>
-                                <li><a href="signIn">Вход</a></li>
+                                <li><a href="/profile">Профиль</a></li>
                             </ul>
                         </nav>
                     </div>
