@@ -37,7 +37,12 @@ public class ProfileServlet extends HttpServlet {
             req.setAttribute("LastName", user.getLastName());
         }
 
-        req.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
+        if (req.getSession().getAttribute("Email") == null) {
+            resp.sendRedirect("/signIn");
+        } else {
+            req.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
+        }
+
     }
 
     @Override

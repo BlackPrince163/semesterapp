@@ -37,7 +37,8 @@
                         <button type="submit" class="btn btn-outline-primary">Войти</button>
                     </div>
                     <div class="col-sm-6">
-                        <button type="submit" class="btn btn-outline-primary">Регистрация</button>
+                        <a href="/signUp" class="btn btn-outline-primary">Регистрация</a>
+                        <%--<button type="submit"  class="btn btn-outline-primary">Регистрация</button>--%>
                     </div>
                 </div>
                 <p></p>
