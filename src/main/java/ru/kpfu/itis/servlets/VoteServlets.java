@@ -62,8 +62,10 @@ public class VoteServlets extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         VoteForm voteForm = objectMapper.readValue(req.getReader(), VoteForm.class);
-        String choice= req.getParameter("adults-number");
+        String choice = req.getParameter("adults-number");
+        String choice2 = req.getParameter("check-vote-deputy-btn");
         System.out.println(choice);
+        System.out.println(choice2);
 
         List<Deputy> voteDeputies;
 
