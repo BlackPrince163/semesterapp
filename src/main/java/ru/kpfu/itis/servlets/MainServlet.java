@@ -39,9 +39,9 @@ public class MainServlet extends HttpServlet {
 
 
         if (req.getSession().getAttribute("Email") == null) {
-            String enfRegister = "<li><a href=\"signUp\">Регистрация</a></li>";
+            String enfRegister = "<a href=\"signUp\">Регистрация</a>";
             req.setAttribute("EmailNotFoundRegis", enfRegister);
-            String enfSignIn = "<li><a href=\"signIn\">Войти</a></li>";
+            String enfSignIn = "<a href=\"signIn\">Войти</a>";
             req.setAttribute("EmailNotFoundSignIn", enfSignIn);
         } else {
             String eLogOut = "<li><a href=\"/logout\">Выйти</a></li>";
