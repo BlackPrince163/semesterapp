@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class VoteForm {
-    private Long id;
+    private String first_name;
 }

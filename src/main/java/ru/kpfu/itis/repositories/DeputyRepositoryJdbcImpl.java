@@ -91,7 +91,7 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
 
     @Override
     public List<Deputy> getVoteDeputy(VoteForm voteForm) {
-        List<Deputy> deputies = template.queryForList(SQL_SELECT_BY_ID, deputyRowMapper, voteForm.getId());
+        List<Deputy> deputies = template.queryForList(SQL_SELECT_BY_ID, deputyRowMapper, voteForm.getFirst_name());
         return deputies;
     }
 }

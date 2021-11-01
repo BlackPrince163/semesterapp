@@ -27,6 +27,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .lastName(row.getString("last_name"))
             .email(row.getString("email"))
             .hashPassword(row.getString("hash_password"))
+            .deputies_id(row.getInt("deputies_id"))
             .build();
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
