@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let checkAvailableRooms = document.querySelector("#check-available-rooms-btn");
+    let checkAvailableRooms = document.querySelector("#check-vote-deputy-btn");
 
     checkAvailableRooms.addEventListener('click', () => {
         sendAvailabilityForm($('#daterange').val(), $('#rooms-number').val(),

@@ -22,9 +22,10 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
             .first_name(row.getString("first_name"))
             .last_name(row.getString("last_name"))
             .age(row.getInt("age"))
-            .vote(row.getInt("vote"))
+            .vote(row.getDouble("vote"))
             .photo(row.getString("photo"))
             .title(row.getString("title"))
+            .fraction(row.getString("fraction"))
             .build();
 
     public DeputyRepositoryJdbcImpl(DataSource dataSource) {
@@ -41,7 +42,7 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
             preparedStatement.setString(i++, entity.getFirst_name());
             preparedStatement.setString(i++, entity.getLast_name());
             preparedStatement.setInt(i++, entity.getAge());
-            preparedStatement.setInt(i++, entity.getVote());
+            preparedStatement.setDouble(i++, entity.getVote());
             preparedStatement.setString(i++, entity.getPhoto());
             preparedStatement.setString(i++, entity.getTitle());
 
@@ -90,7 +91,7 @@ public class DeputyRepositoryJdbcImpl implements DeputyRepository {
 
     @Override
     public List<Deputy> getVoteDeputy(VoteForm voteForm) {
-        List<Deputy> deputies = template.queryForList(SQL_SELECT_BY_FIRST_NAME, deputyRowMapper, voteForm.getFirst_name());
+        List<Deputy> deputies = template.queryForList(SQL_SELECT_BY_ID, deputyRowMapper, voteForm.getId());
         return deputies;
     }
 }

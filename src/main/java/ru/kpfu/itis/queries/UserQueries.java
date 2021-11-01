@@ -15,7 +15,7 @@ public class UserQueries {
     public static final String SQL_INSERT = "INSERT INTO users (first_name, last_name, email, hash_password) VALUES (?, ?, ?, ?);";
 
     // language=SQL
-    public static final String SQL_UPDATE_BY_ID = "UPDATE users SET first_name = ?, last_name = ?, email = ?, rooms_id = ? WHERE id = ?;";
+    public static final String SQL_UPDATE_BY_ID = "UPDATE users SET first_name = ?, last_name = ?, email = ?, deputies_id = ? WHERE id = ?;";
 
     // language=SQL
     public static final String SQL_UPDATE_BY_EMAIL = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE email = ?;";
