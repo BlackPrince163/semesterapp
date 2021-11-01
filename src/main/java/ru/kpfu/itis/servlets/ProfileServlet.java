@@ -36,6 +36,8 @@ public class ProfileServlet extends HttpServlet {
             req.setAttribute("FirstName", user.getFirstName());
             req.setAttribute("LastName", user.getLastName());
         }
+        String eLogOut = "<li><a href=\"/logout\">Выйти</a></li>";
+        req.setAttribute("emailLogOut", eLogOut);
 
         if (req.getSession().getAttribute("Email") == null) {
             resp.sendRedirect("/signIn");
