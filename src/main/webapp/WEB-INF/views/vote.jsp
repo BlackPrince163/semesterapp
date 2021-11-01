@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 
-    <%--JQuery for AJAX, Date Range Picker's files--%>
+    <%--JQuery for AJAX--%>
     <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/allAvailableRooms.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/deputi.js"></script>
 
     <%--Date Range Picker's files--%>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -138,7 +138,6 @@
                                     <div class="single-quantity">
 
                                         <div class="col-lg-4">
-                                            <label for="adults-number"><p>Имя</p></label>
                                             <select id="adults-number" name="adults-number">
                                                 <% for (int i = 0; i < 5; i++) {%>
                                                     <option value="1"><%=deputies.get(i).getFirst_name()%> <%=deputies.get(i).getLast_name()%></option>
@@ -151,6 +150,7 @@
                             </div>
                             <button id="check-vote-deputy-btn" name="check-vote-deputy-btn">Проголосовать</button>
                             <p></p>
+
                             <%--@elvariable id="noAvailableRooms" type=""--%>
                             <c:if test="${not empty noAvailableRooms}">
                                 <h6 class="text-danger">${noAvailableRooms}</h6>
@@ -195,6 +195,16 @@
             </div>
         </div>
     </div>
+    <div id="popup" class="popup ${popupLink}">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="/main" class="popup__close">Вернуться на главную</a>
+                <div class="popup__title">Вы уже проголосовали!</div>
+                <div class="popup__text">Ждите результатов</div>
+            </div>
+        </div>
+    </div>
 </footer>
+<script src="${pageContext.request.contextPath}/static/js/popup.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,11 +40,14 @@ public class VoteServlets extends HttpServlet {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("Email");
         Optional<User> userByEmailOptional = usersService.findOneByEmail(email);
-
+        User user = null;
         if (userByEmailOptional.isPresent()) {
-            User user = userByEmailOptional.get();
+            user = userByEmailOptional.get();
             req.setAttribute("FirstName", user.getFirstName());
-
+            if (user.getDeputies_id() != 0) {
+                String popup = "popup-link";
+                req.setAttribute("popupLink", popup);
+            }
         }
         String eLogOut = "<li><a href=\"/logout\">Выйти</a></li>";
         req.setAttribute("emailLogOut", eLogOut);
@@ -64,8 +68,6 @@ public class VoteServlets extends HttpServlet {
         VoteForm voteForm = objectMapper.readValue(req.getReader(), VoteForm.class);
         String choice = req.getParameter("adults-number");
         String choice2 = req.getParameter("check-vote-deputy-btn");
-        System.out.println(choice);
-        System.out.println(choice2);
 
         List<Deputy> voteDeputies;
 
