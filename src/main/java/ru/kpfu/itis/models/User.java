@@ -15,6 +15,7 @@ public class User {
     private String lastName;
     private String email;
     private String hashPassword;
+    private Integer deputies_id;
 
     public static boolean validate(HttpServletRequest req, HttpServletResponse resp) {
         // непустое имя
