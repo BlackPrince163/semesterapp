@@ -10,11 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class VoteForm {
-/*    private Long dateFrom;
-    private Long dateTo;
-    private Integer roomsNumber;
-    private Integer adultsNumber;
-    private Integer childNumber;
-  */
-    private Long first_name;
+    private Long id;
 }
