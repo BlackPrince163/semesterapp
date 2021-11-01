@@ -1,12 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ru.kpfu.itis.models.Deputy" %>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title>Бронирование</title>
+    <title>Голосование</title>
 
     <%--CSS styles--%>
+<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 
@@ -38,15 +41,23 @@
                     <span style="margin: auto">
                         <div class="top-phone-num">
                             <img src="${pageContext.request.contextPath}static/img/phone.png" alt="">
-                            <span>+7 (999) 000-00-00</span>
+                            <span>+7 (900) 000-00-00</span>
                         </div>
                     </span>
                     <div class="col-md-5" style="max-width: 400px">
                         <nav>
-                            <ul>
-                                <li><a href="signUp">Регистрация</a></li>
-                                <li><a href="signIn">Вход</a></li>
-                            </ul>
+                            <div class="emailNotFound">
+
+                                <li><a href="/profile">${FirstName}</a></li>
+                                <%--<li><a href="/logout">Выйти</a></li>--%>
+
+                                <%--<c:if test="${EmailNotFound == null}">
+                                     <li><a href="signUp">Регистрация</a></li>
+                                     <li><a href="signIn">Войти</a></li>
+                                 </c:if>--%>
+                                <li>${emailLogOut}</li>
+
+                            </div>
                         </nav>
                     </div>
                 </div>
@@ -54,7 +65,6 @@
         </div>
     </div>
 </header>
-
 <div class="main-header-rooms">
     <div class="main-flex-rooms">
         <div class="second-flex">
@@ -72,6 +82,48 @@
 </div>
 
 <section class="room-availability spad">
+
+    <table>
+        <%
+            List<Deputy> deputies = (List) request.getAttribute("ListDeputies");
+        %>
+        <%--<tr>
+            <th>Фото</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Партия</th>
+            <th>Процент</th>
+            <th>Описание</th>
+        </tr>--%>
+        <div class="card-group">
+        <% for (int i = 0; i < 5; i++) {%>
+
+
+            <%--<tr>
+                <img src="<%=deputies.get(i).getPhoto()%>" class="img-thumbnail" alt="">
+                <td><%=deputies.get(i).getPhoto()%></td>
+                <td><%=deputies.get(i).getFirst_name()%></td>
+                <td><%=deputies.get(i).getLast_name()%></td>
+                <td><%=deputies.get(i).getAge()%></td>
+                <td><%=deputies.get(i).getFraction()%></td>
+                <td><%=deputies.get(i).getVote()%></td>
+                <td><%=deputies.get(i).getTitle()%></td>
+            </tr>--%>
+<%--            <a href="#" id="button2" class="buttonText">--%>
+                <div class="card">
+                    <img class="card-img-top" src="<%=deputies.get(i).getPhoto()%>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=deputies.get(i).getFirst_name()%> <%=deputies.get(i).getLast_name()%></h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted"><%=deputies.get(i).getVote()%>%</small></p>
+                    </div>
+                </div>
+<%--            </a>--%>
+        <%}%>
+        </div>
+
+    </table>
     <div class="container">
         <div class="room-check">
             <div class="row">
@@ -84,20 +136,20 @@
                             <div class="room-quantity">
                                 <div class="row">
                                     <div class="single-quantity">
+
                                         <div class="col-lg-4">
                                             <label for="adults-number"><p>Имя</p></label>
                                             <select id="adults-number" name="adults-number">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
+                                                <% for (int i = 0; i < 5; i++) {%>
+                                                    <option value="1"><%=deputies.get(i).getFirst_name()%> <%=deputies.get(i).getLast_name()%></option>
+
+                                                <%}%>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button id="check-available-rooms-btn" name="check-available-rooms-btn">Проголосовать</button>
+                            <button id="check-vote-deputy-btn" name="check-vote-deputy-btn">Проголосовать</button>
                             <p></p>
                             <%--@elvariable id="noAvailableRooms" type=""--%>
                             <c:if test="${not empty noAvailableRooms}">
@@ -111,8 +163,7 @@
         <div class="about-room">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <h2>“Клиенты могут забыть, что вы сказали, но они никогда не забудут, что вы заставили их
-                        почувствовать”.</h2>
+                    <h2>“Не важно кто голосует, важно — кто голоса подсчитывает.”.</h2>
                 </div>
             </div>
         </div>

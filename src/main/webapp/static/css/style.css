@@ -35,11 +35,16 @@ ul {
 }
 
 .main-header-rooms {
-    background-image: url(/static/img/123.jpg);
+    background-image: url(/static/img/bg.jpg);
     max-height: 500px;
     background-size: cover;
     background-position: center;
 }
+
+nav {
+    width: 500px
+}
+
 
 .hotel-logo {
     color: #fff;
@@ -59,7 +64,7 @@ ul {
 }
 
 .main-header-news {
-    background-image: url(/static/img/services-bg.jpg);
+    background-image: url(/static/img/bg.jpg);
     min-height: 500px;
     background-size: cover;
     background-position: center;

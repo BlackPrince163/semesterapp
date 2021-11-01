@@ -24,23 +24,32 @@
                         <nav>
                             <ul>
                                 <li><a href="main">Главная</a></li>
-                                <li><a href="availability">Бронирование</a></li>
-                                <li><a href="news">Новости</a></li>
+                                <li><a href="vote">Голосовать</a></li>
                             </ul>
                         </nav>
                     </div>
                     <span style="margin: auto">
                         <div class="top-phone-num">
                             <img src="${pageContext.request.contextPath}static/img/phone.png" alt="">
-                            <span>+7 (999) 000-54-54</span>
+                            <span>+7 (900) 000-00-00</span>
                         </div>
                     </span>
                     <div class="col-md-5" style="max-width: 400px">
                         <nav>
-                            <ul>
-                                <li><a href="signUp">Регистрация</a></li>
-                                <li><a href="signIn">Вход</a></li>
-                            </ul>
+                            <div class="emailNotFound">
+
+                                <li><a href="/profile">${FirstName}</a></li>
+                                <%--<li><a href="/logout">Выйти</a></li>--%>
+
+                                <%--<c:if test="${EmailNotFound == null}">
+                                     <li><a href="signUp">Регистрация</a></li>
+                                     <li><a href="signIn">Войти</a></li>
+                                 </c:if>--%>
+                                <li>${EmailNotFoundRegis}</li>
+                                <li>${EmailNotFoundSignIn}</li>
+                                <li>${emailLogOut}</li>
+
+                            </div>
                         </nav>
                     </div>
                 </div>
@@ -73,10 +82,10 @@
                     <div class="tags-item">
                         <h4>Поиск по тегам</h4>
                         <div class="tag-links">
-                            <button class="tag-buttons" id="accommodation-tag" value="Жильё">Жильё</button>
-                            <button class="tag-buttons" id="hotel-tag" value="Отель">Отель</button>
+                            <button class="tag-buttons" id="accommodation-tag" value="Вбросы">Вбросы</button>
+                            <button class="tag-buttons" id="hotel-tag" value="ЦИК">ЦИК</button>
                             <button class="tag-buttons" id="events-tag" value="События">События</button>
-                            <button class="tag-buttons" id="booking-tag" value="Бронирование">Бронирование</button>
+                            <button class="tag-buttons" id="booking-tag" value="Голосование">Голосование</button>
                             <button class="tag-buttons" id="holidays-tag" value="Праздники">Праздники</button>
                             <button class="tag-buttons" id="news-tag" value="Новости">Новости</button>
                             <button class="tag-buttons" id="uncategorized-tag" value="Без рубрики">Без рубрики</button>

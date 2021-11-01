@@ -4,10 +4,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <title>Голосование</title>
 
+    <%--CSS styles--%>
+    <%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
+
+    <%--JQuery for AJAX, Date Range Picker's files--%>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/allAvailableRooms.js"></script>
+
+    <%--Date Range Picker's files--%>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script src="${pageContext.request.contextPath}/static/js/daterange.js"></script>
+
 </head>
 
 <body>
@@ -32,8 +45,7 @@
                     </span>
                     <div class="col-md-5" style="max-width: 400px">
                         <nav>
-                            <ul>
-                                <h2>
+                                <div class="emailNotFound">
 
                                         <li><a href="/profile">${FirstName}</a></li>
                                         <%--<li><a href="/logout">Выйти</a></li>--%>
@@ -42,12 +54,11 @@
                                          <li><a href="signUp">Регистрация</a></li>
                                          <li><a href="signIn">Войти</a></li>
                                      </c:if>--%>
-                                    ${EmailNotFoundRegis}
-                                    ${EmailNotFoundSignIn}
-                                    ${emailLogOut}
+                                    <li>${EmailNotFoundRegis}</li>
+                                    <li>${EmailNotFoundSignIn}</li>
+                                    <li>${emailLogOut}</li>
 
-                                </h2>
-                            </ul>
+                                </div>
                         </nav>
                     </div>
                 </div>
