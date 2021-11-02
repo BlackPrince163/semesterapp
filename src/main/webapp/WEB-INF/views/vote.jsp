@@ -138,17 +138,18 @@
                                     <div class="single-quantity">
 
                                         <div class="col-lg-4">
-                                            <select id="adults-number" name="adults-number">
-                                                <% for (int i = 0; i < 5; i++) {%>
-                                                    <option value="1"><%=deputies.get(i).getFirst_name()%> <%=deputies.get(i).getLast_name()%></option>
-
-                                                <%}%>
-                                            </select>
+                                            <form method="post">
+                                                <select id="adults-number" name="adults-number">
+                                                    <% for (int i = 0; i < 5; i++) {%>
+                                                        <option value="<%=deputies.get(i).getId()%>"><%=deputies.get(i).getFirst_name()%> <%=deputies.get(i).getLast_name()%></option>
+                                                    <%}%>
+                                                </select>
+                                                <button id="check-vote-deputy-btn" name="check-vote-deputy-btn">Проголосовать</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button id="check-vote-deputy-btn" name="check-vote-deputy-btn">Проголосовать</button>
                             <p></p>
 
                             <%--@elvariable id="noAvailableRooms" type=""--%>
@@ -199,7 +200,7 @@
         <div class="popup__body">
             <div class="popup__content">
                 <a href="/main" class="popup__close">Вернуться на главную</a>
-                <div class="popup__title">Вы уже проголосовали!</div>
+                <div class="popup__title">Вы уже проголосовали за ${FirstNameDep} ${LastNameDep}</div>
                 <div class="popup__text">Ждите результатов</div>
             </div>
         </div>

@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +31,7 @@ public class VoteServlets extends HttpServlet {
         deputyService = (DeputyService) context.getAttribute("deputyService");
         usersService = (UsersService) context.getAttribute("usersService");
         objectMapper = new ObjectMapper();
+
     }
 
     @Override
@@ -47,6 +47,10 @@ public class VoteServlets extends HttpServlet {
             if (user.getDeputies_id() != 0) {
                 String popup = "popup-link";
                 req.setAttribute("popupLink", popup);
+                Optional<Deputy> findByIdOption = deputyService.findById(Long.valueOf(user.getDeputies_id()));
+                Deputy deputy = findByIdOption.get();
+                req.setAttribute("FirstNameDep", deputy.getFirst_name());
+                req.setAttribute("LastNameDep", deputy.getLast_name());
             }
         }
         String eLogOut = "<li><a href=\"/logout\">Выйти</a></li>";
@@ -60,23 +64,34 @@ public class VoteServlets extends HttpServlet {
             resp.sendRedirect("/signIn");
         } else {
             req.getRequestDispatcher("/WEB-INF/views/vote.jsp").forward(req, resp);
+
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        VoteForm voteForm = objectMapper.readValue(req.getReader(), VoteForm.class);
-        String choice = req.getParameter("adults-number");
-        String choice2 = req.getParameter("check-vote-deputy-btn");
-
+//        VoteForm voteForm = objectMapper.readValue(req.getReader(), VoteForm.class);
         List<Deputy> voteDeputies;
+//        voteDeputies = deputyService.getVoteDeputy(voteForm);
+        User user = null;
 
+        HttpSession session = req.getSession();
+        String email = (String) session.getAttribute("Email");
+        Optional<User> userByEmailOptional = usersService.findOneByEmail(email);
+        Long userID = null;
+        if (userByEmailOptional.isPresent()) {
+            user = userByEmailOptional.get();
+            userID = user.getId();
 
-        voteDeputies = deputyService.getVoteDeputy(voteForm);
+        }
+        String deputies_id = req.getParameter("adults-number");
+        System.out.println(deputies_id);
+        usersService.updateDeputiesIdByID(Long.valueOf(deputies_id), userID);
+        resp.sendRedirect("/main");
 
-        String voteAsJson = objectMapper.writeValueAsString(voteDeputies);
-        resp.setContentType("application/json");
-        resp.getWriter().println(voteAsJson);
+//        String voteAsJson = objectMapper.writeValueAsString(voteDeputies);
+//        resp.setContentType("application/json");
+//        resp.getWriter().println(voteAsJson);
     }
 
 

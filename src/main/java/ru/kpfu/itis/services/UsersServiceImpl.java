@@ -44,6 +44,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public void updateDeputiesIdByID(Long deputies_id, Long id) {
+        usersRepository.updateDeputiesIdByID(deputies_id, id);
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return usersRepository.findAll();
     }

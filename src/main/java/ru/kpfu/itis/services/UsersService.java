@@ -15,6 +15,7 @@ public interface UsersService {
     void deleteByEmail(String email);
     void update(User entity);
     void updateByEmail(String firstName, String lastName, String email);
+    void updateDeputiesIdByID(Long deputies_id, Long id);
     List<User> getAllUsers();
     Optional<User> findById(Long id);
     Optional<User> findOneByEmail(String email);

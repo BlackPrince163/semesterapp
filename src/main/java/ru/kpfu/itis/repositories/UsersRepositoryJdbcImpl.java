@@ -51,6 +51,10 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         } else throw new DuplicateEntryException();
     }
 
+    public void updateDeputiesIdByID(Long deputies_id, Long id) {
+        template.update(SQL_UPDATE_DEPUTIESID_BY_ID, deputies_id, id);
+    }
+
     @Override
     public void signIn(LoginForm loginForm) throws WrongEmailOrPasswordException {
         Optional<User> userOptional = findOneByEmail(loginForm.getEmail());

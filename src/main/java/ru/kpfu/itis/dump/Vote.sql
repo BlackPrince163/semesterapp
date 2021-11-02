@@ -5,8 +5,9 @@ CREATE TABLE users
     last_name     VARCHAR(30),
     email         VARCHAR(30),
     hash_password VARCHAR(100),
-    deputies_id   VARCHAR
+    deputies_id   INTEGER
 );
+
 
 
 CREATE TABLE deputies
