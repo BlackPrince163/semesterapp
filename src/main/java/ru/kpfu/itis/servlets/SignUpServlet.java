@@ -18,6 +18,7 @@ import java.io.IOException;
 public class SignUpServlet extends HttpServlet {
     private UsersService usersService;
 
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();

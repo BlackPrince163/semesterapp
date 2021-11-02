@@ -82,5 +82,12 @@ VALUES (1, 3),
        (3, 2),
        (3, 6);
 
+CREATE TABLE auth (
+    id bigserial primary key,
+    user_id bigint,
+    cookie_value varchar(255),
+    foreign key (user_id) references users(id)
+)
+
 
 

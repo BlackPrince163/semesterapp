@@ -6,6 +6,7 @@ import ru.kpfu.itis.form.LoginForm;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.models.User;
 
+import javax.servlet.http.Cookie;
 import java.util.Optional;
 
 public interface UsersRepository extends CrudRepository<User> {
@@ -14,5 +15,5 @@ public interface UsersRepository extends CrudRepository<User> {
     void updateByEmail(String firstName, String lastName, String email);
     void updateDeputiesIdByID(Long deputies_id, Long id);
     void signUp(UserForm userForm) throws DuplicateEntryException;
-    void signIn(LoginForm loginForm) throws WrongEmailOrPasswordException;
+    Cookie signIn(LoginForm loginForm) throws WrongEmailOrPasswordException;
 }

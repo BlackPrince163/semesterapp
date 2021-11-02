@@ -6,6 +6,7 @@ import ru.kpfu.itis.form.LoginForm;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.models.User;
 
+import javax.servlet.http.Cookie;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,5 +22,5 @@ public interface UsersService {
     Optional<User> findOneByEmail(String email);
 
     void signUp(UserForm userForm) throws DuplicateEntryException;
-    void signIn(LoginForm loginForm) throws WrongEmailOrPasswordException;
+    Cookie signIn(LoginForm loginForm) throws WrongEmailOrPasswordException;
 }

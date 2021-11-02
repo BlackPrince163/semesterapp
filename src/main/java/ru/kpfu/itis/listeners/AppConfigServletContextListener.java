@@ -41,10 +41,11 @@ public class AppConfigServletContextListener implements ServletContextListener {
 
         // UsersRepository
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        AuthRepository authRepository = new AuthRepositoryJdbcImpl(dataSource);
+        UsersService usersService = new UsersServiceImpl(usersRepository, authRepository);
         servletContext.setAttribute("usersService", usersService);
 
-        // RoomsRepository
+        // DeputyRepository
         DeputyRepository deputyRepository = new DeputyRepositoryJdbcImpl(dataSource);
         DeputyService deputyService = new DeputyServiceImpl(deputyRepository);
         servletContext.setAttribute("deputyService", deputyService);

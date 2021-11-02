@@ -5,18 +5,24 @@ import ru.kpfu.itis.exceptions.WrongEmailOrPasswordException;
 import ru.kpfu.itis.form.LoginForm;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.models.User;
+import ru.kpfu.itis.repositories.AuthRepository;
 import ru.kpfu.itis.repositories.UsersRepository;
 
+import javax.servlet.http.Cookie;
 import java.util.List;
 import java.util.Optional;
 
 public class UsersServiceImpl implements UsersService {
 
     private final UsersRepository usersRepository;
+    private final AuthRepository authRepository;
 
-    public UsersServiceImpl(UsersRepository usersRepository) {
+    public UsersServiceImpl(UsersRepository usersRepository, AuthRepository authRepository) {
         this.usersRepository = usersRepository;
+        this.authRepository = authRepository;
     }
+
+
 
     @Override
     public void save(User entity) {
@@ -69,7 +75,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void signIn(LoginForm loginForm) throws WrongEmailOrPasswordException {
-        usersRepository.signIn(loginForm);
+    public Cookie signIn(LoginForm loginForm) throws WrongEmailOrPasswordException {
+        return usersRepository.signIn(loginForm);
     }
 }

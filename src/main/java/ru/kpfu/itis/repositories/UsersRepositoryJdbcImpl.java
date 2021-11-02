@@ -8,10 +8,12 @@ import ru.kpfu.itis.form.LoginForm;
 import ru.kpfu.itis.form.UserForm;
 import ru.kpfu.itis.models.User;
 
+import javax.servlet.http.Cookie;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static ru.kpfu.itis.queries.UserQueries.*;
 
@@ -56,14 +58,20 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public void signIn(LoginForm loginForm) throws WrongEmailOrPasswordException {
+    public Cookie signIn(LoginForm loginForm) throws WrongEmailOrPasswordException {
         Optional<User> userOptional = findOneByEmail(loginForm.getEmail());
+        Cookie cookie = null;
         if (userOptional.isPresent()) {
             User user = userOptional.get();
+            String cookieValue = UUID.randomUUID().toString();
+            System.out.println(cookieValue);
+            cookie = new Cookie("auth", cookieValue);
+            cookie.setMaxAge(10 * 60 * 60);
             if (!encoder.matches(loginForm.getPassword(), user.getHashPassword())) {
                 throw new WrongEmailOrPasswordException();
             }
         } else throw new WrongEmailOrPasswordException();
+        return cookie;
     }
 
     @Override
